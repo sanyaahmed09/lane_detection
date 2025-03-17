@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Robot Logs</title>
+    <script>
+        function fetchLogs() {
+            fetch('/logs')
+                .then(response => response.json())
+                .then(logs => {
+                    let logDiv = document.getElementById("log-output");
+                    logDiv.innerHTML = "";
+                    logs.forEach(log => {
+                        let logEntry = document.createElement("p");
+                        logEntry.textContent = log;
+                        logDiv.appendChild(logEntry);
+                    });
+                });
+        }
+        setInterval(fetchLogs, 2000);
+    </script>
+</head>
+<body>
+    <h1>Movement Logs</h1>
+    <div id="log-output" style="background: #f4f4f4; padding: 10px; border: 1px solid #ccc; max-height: 300px; overflow-y: scroll;"></div>
+</body>
+</html>
