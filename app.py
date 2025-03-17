@@ -4,6 +4,37 @@ import os
 import subprocess
 from lines import generate_video_frames
 
+"""
+PSUDOCODE:
+Initialize Flask app with secret key
+Define create_database() to set up user and log tables in SQLite
+Call create_database() to ensure tables exist
+
+Define login():
+    If POST request:
+        Get username, password, and action from form
+        Connect to database
+        If signup, insert user and handle duplicate usernames
+        If login, check credentials and start session
+        Close database connection
+    Render login page with error if needed
+
+Define logout(): Clear session and redirect to login
+Define screen(): Ensure user is logged in, else redirect to login
+Define start_lane_detection(): Run lane detection script asynchronously
+Define video_feed(): Stream frames from generate_video_frames()
+Define serve_video(filename): Serve static video files
+
+Define log_action():
+    Get action from JSON request
+    Store action in database
+    Return success response
+
+Define logs(): Retrieve and return last 10 logged actions
+
+Run app in debug mode if executed directly
+"""
+
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
