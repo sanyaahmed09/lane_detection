@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Controls</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .controller {
+            background: #333;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 80px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to bottom, #555, #222);
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+            .btn:hover {
+                background: linear-gradient(to bottom, #666, #333);
+                transform: scale(1.1);
+            }
+
+            .btn:active {
+                transform: scale(0.95);
+            }
+
+        .play-btn {
+            width: 100px;
+            height: 50px;
+            background: linear-gradient(to bottom, #4CAF50, #2E7D32);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+            .play-btn:hover {
+                background: linear-gradient(to bottom, #66BB6A, #388E3C);
+            }
+
+        .dpad {
+            display: grid;
+            grid-template-columns: 80px 80px 80px;
+            grid-gap: 10px;
+            justify-content: center;
+        }
+
+            .dpad button:nth-child(1) {
+                grid-column: 2;
+            }
+
+            .dpad button:nth-child(2) {
+                grid-column: 1;
+            }
+
+            .dpad button:nth-child(3) {
+                grid-column: 2;
+            }
+
+            .dpad button:nth-child(4) {
+                grid-column: 3;
+            }
+    </style>
+
+    <script>
+        function playVideos() {
+            document.getElementById("videoOverlay").play();
+            document.getElementById("videoMain").play();
+        }
+
+        function sendAction(action) {
+            fetch('/log_action', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: action })
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>Car Controls</h2>
+
+    <div class="controller">
+        <button class="play-btn btn" onclick="fetch('/start_lane_detection', { method: 'POST' })">▶ Play</button>
+
+
+        <div class="dpad">
+            <button class="btn" onclick="sendAction('Straight')">↑</button>
+            <button class="btn" onclick="sendAction('Left')">←</button>
+            <button class="btn" onclick="sendAction('Right')">→</button>
+        </div>
+    </div>
+</body>
+</html>
