@@ -3,6 +3,38 @@ import numpy as np
 import requests
 import time
 
+"""
+PSUDOCODE:
+Initialize video capture and variables (prev_left_line, prev_right_line, lane_change_active, timestamp)
+Define log_action(action) to send action data to Flask
+
+Define region_of_interest(img, vertices) to mask ROI
+Define draw_lines(img, lines) to draw detected lane lines
+Define extrapolate_lines(lines, img_shape, prev_line) to fit lane lines
+Define enforce_lane_distance(left_line, right_line) to ensure valid lane spacing
+Define overlay_arrow(frame, direction) to display turn direction
+Define compute_center_line(left_line, right_line) to find lane midpoint
+
+Define detect_lanes(frame, prev_left, prev_right, lane_change, timestamp):
+    Convert frame to grayscale, blur, and detect edges
+    Apply ROI mask and Hough transform to detect lane lines
+    Categorize lines into left and right based on slope
+    Extrapolate left and right lanes, ensuring valid distance
+    Compute center line and update lane change state
+    Draw lane lines and determine turn direction
+    Log direction and overlay arrow
+    Return processed frame and updated lane data
+
+Define generate_video_frames():
+    Open video and process frames in loop:
+        Detect lanes and encode frame to JPEG
+        Yield frame for streaming
+        Determine and log direction based on midline
+    Release video resources
+
+If script runs as main, call generate_video_frames()
+"""
+
 def log_action(action):
     """Send log data to Flask app"""
     try:
