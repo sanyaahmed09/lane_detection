@@ -56,6 +56,11 @@
             cursor: pointer;
             transition: 0.3s;
             box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+
+            position: absolute;
+            top: 160px;
+            left:50%;
+            transform: translateX(-50%);
         }
         .play-button:hover {
             background: #45a049;
@@ -79,6 +84,91 @@
             color: white;
             position: sticky;
             top: 0;
+        }
+        .up-arrow-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: #6f65e4;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+
+            position: absolute;
+            top: 100px;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        .left-arrow-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: #6f65e4;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+
+            position: absolute;
+            top: 160px;
+            left:30%;
+            transform: translateX(-50%);
+        }
+        .right-arrow-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: #6f65e4;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+
+            position: absolute;
+            top: 160px;
+            left:70%;
+            transform: translateX(-50%);
+        }
+        .down-arrow-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: #6f65e4;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+
+            position: absolute;
+            top: 230px;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        .pause-arrow-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: #c34d4d;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+
+            position: absolute;
+            top: 25px;
+            left:70%;
+            transform: translateX(-50%);
         }
     </style>
     <script>
@@ -123,6 +213,11 @@
 
         <div class="quadrant">
             <button class="play-button" onclick="startLaneDetection()">▶ </button>
+            <button class="up-arrow-button" >↑</button>
+            <button class="left-arrow-button" >←</button>
+            <button class="right-arrow-button" >→</button>
+            <button class="down-arrow-button" >↓</button>
+            <button class="pause-arrow-button" >⏸</button>
         </div>
 
         <div class="quadrant">
